@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Button from './Button.jsx';
 import { formatTonnes } from '../utils/format.js';
 import { validateRetireQuantity } from '../utils/validate.js';
@@ -23,6 +23,20 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
     () => validateRetireQuantity(tonnes, holding.tonnes),
     [tonnes, holding.tonnes]
   );
+
+  // Close on Escape and lock background scroll while the modal is open.
+  useEffect(() => {
+    function onKey(event) {
+      if (event.key === 'Escape') onClose();
+    }
+    document.addEventListener('keydown', onKey);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [onClose]);
 
   function handleConfirm() {
     setTouched(true);

@@ -1,0 +1,86 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.modal {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 420px;
+  padding: 1.25rem;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-head h3 {
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-sub {
+  margin: 0.25rem 0 0;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.modal-balance {
+  margin: 0.15rem 0 1rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+}
+
+.modal-field input {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+}
+
+.modal-field input:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+}
+
+.modal-error {
+  margin: 0 0 0.75rem;
+  color: var(--color-danger);
+  font-size: 0.85rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}

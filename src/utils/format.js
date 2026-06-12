@@ -37,6 +37,18 @@ export function shortenAddress(address) {
 }
 
 /**
+ * Compute remaining supply as a clamped 0-100 percentage.
+ * @param {number} available
+ * @param {number} total
+ * @returns {number}
+ */
+export function availabilityPercent(available, total) {
+  if (!total || total <= 0) return 0;
+  const pct = (Number(available) / Number(total)) * 100;
+  return Math.max(0, Math.min(100, Math.round(pct)));
+}
+
+/**
  * Format an ISO date string as a human-readable date.
  * @param {string} iso
  * @returns {string}

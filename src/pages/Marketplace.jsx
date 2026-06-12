@@ -3,7 +3,7 @@ import { useMarket } from '../hooks/useMarket.js';
 import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 import BatchCard from '../components/BatchCard.jsx';
 import ListingRow from '../components/ListingRow.jsx';
-import Loader from '../components/Loader.jsx';
+import SkeletonGrid from '../components/SkeletonGrid.jsx';
 import ErrorMessage from '../components/ErrorMessage.jsx';
 import EmptyState from '../components/EmptyState.jsx';
 import './Marketplace.css';
@@ -91,7 +91,7 @@ export default function Marketplace() {
         </div>
       )}
 
-      {loading && <Loader label="Loading batches..." />}
+      {loading && <SkeletonGrid />}
       {!loading && error && <ErrorMessage message={error} onRetry={reload} />}
       {!loading && !error && batches.length === 0 && (
         <EmptyState

@@ -1,0 +1,56 @@
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+}
+
+.skeleton-line {
+  display: block;
+  height: 0.9rem;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-2) 25%,
+    var(--color-border) 37%,
+    var(--color-surface-2) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+}
+
+.skeleton-line-sm {
+  width: 35%;
+}
+
+.skeleton-line-md {
+  width: 60%;
+}
+
+.skeleton-line-lg {
+  width: 80%;
+  height: 1.2rem;
+}
+
+.skeleton-bar {
+  height: 5px;
+  margin-top: 0.4rem;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

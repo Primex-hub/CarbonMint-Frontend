@@ -87,4 +87,22 @@
   .steps {
     grid-template-columns: 1fr;
   }
+
+  .home-stats {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 2rem 0.5rem 1.75rem;
+  }
+
+  .hero-actions a {
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
 }

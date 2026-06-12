@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useMarket } from '../hooks/useMarket.js';
 import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
+import { useDebounce } from '../hooks/useDebounce.js';
 import BatchCard from '../components/BatchCard.jsx';
 import ListingRow from '../components/ListingRow.jsx';
 import SkeletonGrid from '../components/SkeletonGrid.jsx';
@@ -18,9 +19,10 @@ export default function Marketplace() {
   const [view, setView] = useState('grid');
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState('default');
+  const debouncedQuery = useDebounce(query);
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = debouncedQuery.trim().toLowerCase();
     const matched = !q
       ? batches
       : batches.filter((batch) => {
@@ -41,7 +43,7 @@ export default function Marketplace() {
       sorted.sort((a, b) => b.availableTonnes - a.availableTonnes);
     }
     return sorted;
-  }, [batches, query, sort]);
+  }, [batches, debouncedQuery, sort]);
 
   return (
     <div className="marketplace">

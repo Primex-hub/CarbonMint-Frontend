@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWallet } from '../hooks/useWallet.js';
 import { useHoldings } from '../hooks/useHoldings.js';
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 import { retireCredits } from '../services/retirement.js';
 import { formatCurrency, formatTonnes } from '../utils/format.js';
 import Button from '../components/Button.jsx';
@@ -15,6 +16,7 @@ import './MyCredits.css';
  * (burn) credits to receive a certificate.
  */
 export default function MyCredits() {
+  useDocumentTitle('My Credits');
   const { wallet, isConnected, connect } = useWallet();
   const { holdings, totals, retireHolding } = useHoldings();
 

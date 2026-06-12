@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useMarket } from '../hooks/useMarket.js';
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 import BatchCard from '../components/BatchCard.jsx';
 import ListingRow from '../components/ListingRow.jsx';
 import Loader from '../components/Loader.jsx';
@@ -12,6 +13,7 @@ import './Marketplace.css';
  * grid and list view toggle.
  */
 export default function Marketplace() {
+  useDocumentTitle('Marketplace');
   const { batches, loading, error, reload } = useMarket();
   const [view, setView] = useState('grid');
   const [query, setQuery] = useState('');

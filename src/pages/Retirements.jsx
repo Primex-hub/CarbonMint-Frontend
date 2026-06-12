@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useHoldings } from '../hooks/useHoldings.js';
 import { useWallet } from '../hooks/useWallet.js';
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 import { formatTonnes } from '../utils/format.js';
 import CertificateCard from '../components/CertificateCard.jsx';
 import EmptyState from '../components/EmptyState.jsx';
@@ -11,6 +12,7 @@ import './Retirements.css';
  * Lists all retirement certificates issued to the connected user.
  */
 export default function Retirements() {
+  useDocumentTitle('Retirements');
   const { isConnected, connect } = useWallet();
   const { certificates, totals } = useHoldings();
 

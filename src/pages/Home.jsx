@@ -1,0 +1,55 @@
+import { Link } from 'react-router-dom';
+import Button from '../components/Button.jsx';
+import './Home.css';
+
+const steps = [
+  {
+    title: '1. Mint',
+    body: 'Verified projects mint credit batches as CARBON tokens on Soroban, each tied to a registry serial and vintage year.',
+  },
+  {
+    title: '2. Buy',
+    body: 'Browse the marketplace and purchase tonnes of CO2e from the batches that match your offset goals and budget.',
+  },
+  {
+    title: '3. Retire',
+    body: 'Burn the credits you own to permanently retire them. CarbonMint issues an on-chain retirement certificate as proof.',
+  },
+];
+
+/**
+ * Landing page explaining the tokenized carbon-credit lifecycle.
+ */
+export default function Home() {
+  return (
+    <div className="home">
+      <section className="hero">
+        <h1 className="hero-title">
+          Tokenized carbon credits, <span>transparent by design.</span>
+        </h1>
+        <p className="hero-subtitle">
+          CarbonMint turns verified emission reductions into CARBON tokens on
+          the Stellar network. Buy credits, hold them in your wallet, and retire
+          them to claim a permanent, auditable offset certificate.
+        </p>
+        <div className="hero-actions">
+          <Link to="/marketplace">
+            <Button>Explore Marketplace</Button>
+          </Link>
+          <Link to="/my-credits">
+            <Button variant="secondary">View My Credits</Button>
+          </Link>
+        </div>
+      </section>
+
+      <section className="steps">
+        {steps.map((step) => (
+          <div className="step-card" key={step.title}>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </div>
+        ))}
+      </section>
+    </div>
+  );
+}

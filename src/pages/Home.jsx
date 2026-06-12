@@ -1,6 +1,17 @@
 import { Link } from 'react-router-dom';
 import Button from '../components/Button.jsx';
+import { BATCHES } from '../services/market.js';
+import { PROJECTS } from '../constants/projects.js';
+import { formatTonnes } from '../utils/format.js';
 import './Home.css';
+
+const totalAvailable = BATCHES.reduce((sum, b) => sum + b.availableTonnes, 0);
+
+const stats = [
+  { label: 'Projects', value: String(PROJECTS.length) },
+  { label: 'Listed batches', value: String(BATCHES.length) },
+  { label: 'Credits available', value: formatTonnes(totalAvailable) },
+];
 
 const steps = [
   {
@@ -40,6 +51,15 @@ export default function Home() {
             <Button variant="secondary">View My Credits</Button>
           </Link>
         </div>
+      </section>
+
+      <section className="home-stats">
+        {stats.map((stat) => (
+          <div className="home-stat" key={stat.label}>
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </div>
+        ))}
       </section>
 
       <section className="steps">

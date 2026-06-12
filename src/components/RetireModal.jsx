@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Button from './Button.jsx';
 import { formatTonnes } from '../utils/format.js';
 import { validateRetireQuantity } from '../utils/validate.js';
@@ -18,6 +18,7 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
   const [tonnes, setTonnes] = useState('');
   const [beneficiary, setBeneficiary] = useState('');
   const [touched, setTouched] = useState(false);
+  const inputRef = useRef(null);
 
   const validation = useMemo(
     () => validateRetireQuantity(tonnes, holding.tonnes),
@@ -38,6 +39,11 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
     };
   }, [onClose]);
 
+  // Move focus into the dialog so keyboard users start inside it.
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
   function handleConfirm() {
     setTouched(true);
     if (!validation.valid) return;
@@ -50,11 +56,17 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
         className="modal"
         role="dialog"
         aria-modal="true"
+        aria-labelledby="retire-modal-title"
         onClick={(e) => e.stopPropagation()}
       >
         <header className="modal-head">
-          <h3>Retire credits</h3>
-          <button type="button" className="modal-close" onClick={onClose}>
+          <h3 id="retire-modal-title">Retire credits</h3>
+          <button
+            type="button"
+            className="modal-close"
+            aria-label="Close dialog"
+            onClick={onClose}
+          >
             ×
           </button>
         </header>
@@ -70,6 +82,7 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
           <span>Tonnes to retire</span>
           <div className="modal-input-row">
             <input
+              ref={inputRef}
               type="number"
               min="1"
               step="1"

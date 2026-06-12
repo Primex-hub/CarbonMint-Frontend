@@ -53,3 +53,15 @@ export function validateRetireQuantity(quantity, owned) {
   }
   return { valid: true, error: null };
 }
+
+/**
+ * Check whether a string looks like a Stellar public key. A real public key is
+ * a 56-character base32 string beginning with `G`; this performs a shape check
+ * suitable for client-side validation only.
+ * @param {string} address
+ * @returns {boolean}
+ */
+export function isStellarAddress(address) {
+  if (typeof address !== 'string') return false;
+  return /^G[A-Z2-7]{55}$/.test(address.trim());
+}

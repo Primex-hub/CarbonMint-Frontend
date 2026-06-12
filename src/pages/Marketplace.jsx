@@ -15,19 +15,31 @@ export default function Marketplace() {
   const { batches, loading, error, reload } = useMarket();
   const [view, setView] = useState('grid');
   const [query, setQuery] = useState('');
+  const [sort, setSort] = useState('default');
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return batches;
-    return batches.filter((batch) => {
-      const project = batch.project || {};
-      return (
-        project.name?.toLowerCase().includes(q) ||
-        project.country?.toLowerCase().includes(q) ||
-        project.type?.toLowerCase().includes(q)
-      );
-    });
-  }, [batches, query]);
+    const matched = !q
+      ? batches
+      : batches.filter((batch) => {
+          const project = batch.project || {};
+          return (
+            project.name?.toLowerCase().includes(q) ||
+            project.country?.toLowerCase().includes(q) ||
+            project.type?.toLowerCase().includes(q)
+          );
+        });
+
+    const sorted = [...matched];
+    if (sort === 'price-asc') {
+      sorted.sort((a, b) => a.pricePerTonne - b.pricePerTonne);
+    } else if (sort === 'price-desc') {
+      sorted.sort((a, b) => b.pricePerTonne - a.pricePerTonne);
+    } else if (sort === 'available-desc') {
+      sorted.sort((a, b) => b.availableTonnes - a.availableTonnes);
+    }
+    return sorted;
+  }, [batches, query, sort]);
 
   return (
     <div className="marketplace">
@@ -55,13 +67,26 @@ export default function Marketplace() {
       </div>
 
       {!loading && !error && batches.length > 0 && (
-        <input
-          type="search"
-          className="marketplace-search"
-          placeholder="Search by project, country or type..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
+        <div className="marketplace-controls">
+          <input
+            type="search"
+            className="marketplace-search"
+            placeholder="Search by project, country or type..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <select
+            className="marketplace-sort"
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+            aria-label="Sort batches"
+          >
+            <option value="default">Sort: Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="available-desc">Most available</option>
+          </select>
+        </div>
       )}
 
       {loading && <Loader label="Loading batches..." />}

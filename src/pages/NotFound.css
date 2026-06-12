@@ -1,0 +1,17 @@
+.not-found {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.not-found h1 {
+  font-size: 3rem;
+  color: var(--color-primary-light);
+}
+
+.not-found p {
+  color: var(--color-muted);
+}
+
+.not-found-action {
+  margin-top: 1rem;
+}

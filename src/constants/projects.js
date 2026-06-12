@@ -55,6 +55,24 @@ export const PROJECTS = [
     description:
       'Converting agricultural residue into stable biochar that locks carbon into soils while improving farm yields.',
   },
+  {
+    id: 'scotland-peatland',
+    name: 'Highlands Peatland Restoration',
+    type: 'Wetland Restoration',
+    country: 'United Kingdom',
+    registry: 'Woodland Carbon Code',
+    description:
+      'Rewetting degraded blanket bog to halt peat oxidation and restore one of the most carbon-dense habitats on land.',
+  },
+  {
+    id: 'chile-wind',
+    name: 'Atacama Wind Cluster',
+    type: 'Renewable Energy',
+    country: 'Chile',
+    registry: 'Gold Standard',
+    description:
+      'A 150 MW wind cluster feeding clean power into the northern Chilean grid and displacing diesel generation.',
+  },
 ];
 
 export function getProjectById(id) {

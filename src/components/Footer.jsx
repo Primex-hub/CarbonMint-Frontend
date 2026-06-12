@@ -1,3 +1,4 @@
+import { CONFIG } from '../constants/config.js';
 import './Footer.css';
 
 /**
@@ -12,7 +13,7 @@ export default function Footer() {
           CarbonMint — tokenized carbon credits on Stellar &amp; Soroban.
         </p>
         <p className="footer-note">
-          Demo build · mock data · {year} · Network: TESTNET
+          Demo build · mock data · {year} · Network: {CONFIG.network}
         </p>
       </div>
     </footer>

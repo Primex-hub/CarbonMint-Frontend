@@ -6,6 +6,8 @@
  * "connection" survives page reloads, mimicking real wallet behavior.
  */
 
+import { CONFIG } from '../constants/config.js';
+
 const STORAGE_KEY = 'carbonmint.wallet';
 
 function randomPublicKey() {
@@ -30,7 +32,7 @@ export async function connectWallet() {
   const existing = localStorage.getItem(STORAGE_KEY);
   const publicKey = existing || randomPublicKey();
   localStorage.setItem(STORAGE_KEY, publicKey);
-  return { publicKey, network: 'TESTNET' };
+  return { publicKey, network: CONFIG.network };
 }
 
 /**
@@ -49,5 +51,5 @@ export async function disconnectWallet() {
 export function getStoredWallet() {
   const publicKey = localStorage.getItem(STORAGE_KEY);
   if (!publicKey) return null;
-  return { publicKey, network: 'TESTNET' };
+  return { publicKey, network: CONFIG.network };
 }

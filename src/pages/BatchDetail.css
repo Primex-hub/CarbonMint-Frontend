@@ -1,0 +1,81 @@
+.batch-back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.batch-detail-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.batch-detail-type {
+  display: inline-block;
+  background: var(--color-surface-2);
+  color: var(--color-accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  margin-bottom: 0.5rem;
+}
+
+.batch-detail-desc {
+  color: var(--color-muted);
+  max-width: 60ch;
+}
+
+.batch-detail-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.batch-detail-facts dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+.batch-detail-facts dd {
+  margin: 0.15rem 0 0;
+  font-weight: 600;
+}
+
+.mono {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.85rem;
+}
+
+.batch-detail-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.buy-receipt {
+  background: rgba(47, 185, 120, 0.1);
+  border: 1px solid rgba(47, 185, 120, 0.35);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.buy-receipt p {
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+}
+
+.buy-receipt-tx {
+  color: var(--color-muted);
+  word-break: break-all;
+}
+
+@media (max-width: 720px) {
+  .batch-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

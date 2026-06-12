@@ -32,3 +32,35 @@ npm run dev
 ```
 
 Then open the URL Vite prints (default `http://localhost:5173`).
+
+## How it works
+
+1. **Mint** — verified projects mint credit batches as `CARBON` tokens. In this
+   demo, batches are static mock data in `src/services/market.js`.
+2. **Buy** — users connect a (mock) wallet and purchase tonnes from a batch.
+   Holdings are tracked in `AppContext`.
+3. **Retire** — users burn credits they hold; the app issues a retirement
+   certificate as proof of offset.
+
+## Project structure
+
+```
+src/
+  components/   reusable UI (Navbar, BatchCard, BuyForm, RetireModal, ...)
+  pages/        routed views (Home, Marketplace, BatchDetail, MyCredits, ...)
+  services/     mock wallet, marketplace, api and retirement logic
+  context/      AppContext global state provider
+  hooks/        useWallet, useMarket, useHoldings
+  utils/        format and validate helpers
+  constants/    project catalog and runtime config
+```
+
+## Environment
+
+Copy `.env.example` to `.env` to override defaults. All values are optional —
+the demo runs without any configuration.
+
+## Disclaimer
+
+This project is for demonstration only. No real tokens, payments, or carbon
+credits are involved.

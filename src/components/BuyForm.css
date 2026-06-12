@@ -54,3 +54,9 @@
   font-size: 0.8rem;
   color: var(--color-muted);
 }
+
+.buy-form-soldout {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}

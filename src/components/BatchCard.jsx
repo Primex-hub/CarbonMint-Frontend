@@ -18,7 +18,11 @@ export default function BatchCard({ batch }) {
     <Link to={`/batch/${batch.id}`} className="batch-card">
       <div className="batch-card-head">
         <span className="batch-card-type">{project?.type}</span>
-        <span className="batch-card-vintage">Vintage {batch.vintage}</span>
+        {batch.availableTonnes <= 0 ? (
+          <span className="batch-card-soldout">Sold out</span>
+        ) : (
+          <span className="batch-card-vintage">Vintage {batch.vintage}</span>
+        )}
       </div>
       <h3 className="batch-card-name">{project?.name}</h3>
       <p className="batch-card-country">{project?.country}</p>

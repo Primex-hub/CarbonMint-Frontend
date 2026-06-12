@@ -17,6 +17,7 @@ export default function BuyForm({ batch, onBuy, submitting }) {
   const { isConnected, connect } = useWallet();
   const [quantity, setQuantity] = useState('');
   const [touched, setTouched] = useState(false);
+  const soldOut = batch.availableTonnes <= 0;
 
   const validation = useMemo(
     () => validateBuyQuantity(quantity, batch.availableTonnes),
@@ -34,6 +35,18 @@ export default function BuyForm({ batch, onBuy, submitting }) {
     setTouched(true);
     if (!validation.valid) return;
     onBuy(Number(quantity));
+  }
+
+  if (soldOut) {
+    return (
+      <div className="buy-form">
+        <h3>Buy credits</h3>
+        <p className="buy-form-soldout">
+          This batch is fully sold. Browse the marketplace for other available
+          credits.
+        </p>
+      </div>
+    );
   }
 
   return (

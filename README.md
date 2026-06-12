@@ -33,6 +33,12 @@ npm run dev
 
 Then open the URL Vite prints (default `http://localhost:5173`).
 
+## Scripts
+
+- `npm run dev` — start the Vite dev server with hot reloading.
+- `npm run build` — produce an optimized production build in `dist/`.
+- `npm run preview` — serve the production build locally to sanity-check it.
+
 ## How it works
 
 1. **Mint** — verified projects mint credit batches as `CARBON` tokens. In this
@@ -50,7 +56,7 @@ src/
   pages/        routed views (Home, Marketplace, BatchDetail, MyCredits, ...)
   services/     mock wallet, marketplace, api and retirement logic
   context/      AppContext global state provider
-  hooks/        useWallet, useMarket, useHoldings
+  hooks/        useWallet, useMarket, useHoldings, useDebounce, useDocumentTitle
   utils/        format and validate helpers
   constants/    project catalog and runtime config
 ```

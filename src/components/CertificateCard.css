@@ -1,0 +1,55 @@
+.certificate {
+  background: linear-gradient(160deg, var(--color-surface), var(--color-surface-2));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.certificate-ribbon {
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 1rem;
+}
+
+.certificate-body {
+  padding: 1.1rem;
+}
+
+.certificate-tonnes {
+  font-size: 1.6rem;
+  margin: 0;
+  color: var(--color-accent);
+}
+
+.certificate-project {
+  margin: 0 0 1rem;
+  font-weight: 600;
+}
+
+.certificate-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.certificate-meta dt {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+.certificate-meta dd {
+  margin: 0.1rem 0 0;
+  font-size: 0.85rem;
+}
+
+.certificate-tx {
+  color: var(--color-muted);
+  word-break: break-all;
+}

@@ -68,15 +68,24 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
 
         <label className="modal-field">
           <span>Tonnes to retire</span>
-          <input
-            type="number"
-            min="1"
-            step="1"
-            value={tonnes}
-            placeholder="0"
-            onChange={(e) => setTonnes(e.target.value)}
-            onBlur={() => setTouched(true)}
-          />
+          <div className="modal-input-row">
+            <input
+              type="number"
+              min="1"
+              step="1"
+              value={tonnes}
+              placeholder="0"
+              onChange={(e) => setTonnes(e.target.value)}
+              onBlur={() => setTouched(true)}
+            />
+            <button
+              type="button"
+              className="modal-max"
+              onClick={() => setTonnes(String(holding.tonnes))}
+            >
+              Max
+            </button>
+          </div>
         </label>
 
         <label className="modal-field">

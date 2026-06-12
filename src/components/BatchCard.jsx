@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import {
   availabilityPercent,
   formatCurrency,
+  formatPercent,
   formatTonnes,
 } from '../utils/format.js';
 import './BatchCard.css';
@@ -36,7 +37,14 @@ export default function BatchCard({ batch }) {
           <strong>{formatTonnes(batch.availableTonnes)}</strong>
         </div>
       </div>
-      <div className="batch-card-bar" aria-hidden="true">
+      <div
+        className="batch-card-bar"
+        role="progressbar"
+        aria-valuenow={pct}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={`${formatPercent(pct)} of supply available`}
+      >
         <span className="batch-card-bar-fill" style={{ width: `${pct}%` }} />
       </div>
     </Link>

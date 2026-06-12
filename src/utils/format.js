@@ -49,6 +49,16 @@ export function availabilityPercent(available, total) {
 }
 
 /**
+ * Format a 0-100 number as a rounded percentage string.
+ * @param {number} value
+ * @returns {string}
+ */
+export function formatPercent(value) {
+  const n = Number(value) || 0;
+  return `${Math.round(n)}%`;
+}
+
+/**
  * Format an ISO date string as a human-readable date.
  * @param {string} iso
  * @returns {string}

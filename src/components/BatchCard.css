@@ -57,3 +57,17 @@
   letter-spacing: 0.04em;
   color: var(--color-muted);
 }
+
+.batch-card-bar {
+  margin-top: 0.75rem;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--color-surface-2);
+  overflow: hidden;
+}
+
+.batch-card-bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--color-primary-light);
+}

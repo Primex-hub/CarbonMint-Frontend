@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
-import { formatCurrency, formatTonnes } from '../utils/format.js';
+import {
+  availabilityPercent,
+  formatCurrency,
+  formatTonnes,
+} from '../utils/format.js';
 import './BatchCard.css';
 
 /**
@@ -9,6 +13,7 @@ import './BatchCard.css';
  */
 export default function BatchCard({ batch }) {
   const { project } = batch;
+  const pct = availabilityPercent(batch.availableTonnes, batch.totalTonnes);
   return (
     <Link to={`/batch/${batch.id}`} className="batch-card">
       <div className="batch-card-head">
@@ -26,6 +31,9 @@ export default function BatchCard({ batch }) {
           <span className="batch-card-label">Available</span>
           <strong>{formatTonnes(batch.availableTonnes)}</strong>
         </div>
+      </div>
+      <div className="batch-card-bar" aria-hidden="true">
+        <span className="batch-card-bar-fill" style={{ width: `${pct}%` }} />
       </div>
     </Link>
   );

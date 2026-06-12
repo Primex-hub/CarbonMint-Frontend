@@ -59,6 +59,29 @@ export function formatPercent(value) {
 }
 
 /**
+ * Format a large tonnage compactly, e.g. 12500 -> "12.5K tCO2e".
+ * @param {number} value
+ * @returns {string}
+ */
+export function formatTonnesCompact(value) {
+  const n = Number(value) || 0;
+  const compact = n.toLocaleString('en-US', {
+    notation: 'compact',
+    maximumFractionDigits: 1,
+  });
+  return `${compact} tCO2e`;
+}
+
+/**
+ * Format a unit price as a per-tonne currency string.
+ * @param {number} value - price per tonne in USDC
+ * @returns {string}
+ */
+export function formatPricePerTonne(value) {
+  return `${formatCurrency(value)} / tCO2e`;
+}
+
+/**
  * Format an ISO date string as a human-readable date.
  * @param {string} iso
  * @returns {string}

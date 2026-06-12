@@ -1,0 +1,61 @@
+.marketplace-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.view-toggle button {
+  background: var(--color-surface);
+  color: var(--color-muted);
+  border: none;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.view-toggle button.active {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.marketplace-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.listing-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 0.7fr 1fr 1fr;
+  gap: 0.75rem;
+  padding: 0 1rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+.listing-header-price {
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .listing-header {
+    display: none;
+  }
+}

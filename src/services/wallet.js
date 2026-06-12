@@ -7,6 +7,7 @@
  */
 
 import { CONFIG } from '../constants/config.js';
+import { delay } from '../utils/delay.js';
 
 const STORAGE_KEY = 'carbonmint.wallet';
 
@@ -17,10 +18,6 @@ function randomPublicKey() {
     key += chars[Math.floor(Math.random() * chars.length)];
   }
   return key;
-}
-
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 /**

@@ -8,12 +8,9 @@
 
 import { BATCHES } from './market.js';
 import { getProjectById } from '../constants/projects.js';
+import { delay } from '../utils/delay.js';
 
 const LATENCY_MS = 350;
-
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 // Clone so callers cannot mutate the source data by reference.
 function clone(value) {

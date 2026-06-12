@@ -5,11 +5,9 @@
  * retirement certificate as proof of offset. No network calls are made.
  */
 
-const LATENCY_MS = 450;
+import { delay } from '../utils/delay.js';
 
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+const LATENCY_MS = 450;
 
 function certificateId() {
   const stamp = Date.now().toString(36).toUpperCase();

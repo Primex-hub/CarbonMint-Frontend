@@ -1,0 +1,49 @@
+.wallet-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+}
+
+.wallet-button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.wallet-button.connected {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  cursor: default;
+}
+
+.wallet-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+}
+
+.wallet-address {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.85rem;
+}
+
+.wallet-disconnect {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.wallet-disconnect:hover {
+  color: var(--color-danger);
+}

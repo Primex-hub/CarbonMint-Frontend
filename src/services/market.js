@@ -57,4 +57,14 @@ export const BATCHES = [
     serial: 'PURO-0007-2024-ISL',
     assetCode: 'CARBON',
   },
+  {
+    id: 'batch-006',
+    projectId: 'ghana-biochar',
+    vintage: 2024,
+    pricePerTonne: 132.5,
+    totalTonnes: 900,
+    availableTonnes: 720,
+    serial: 'PURO-0143-2024-GHA',
+    assetCode: 'CARBON',
+  },
 ];

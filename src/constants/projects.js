@@ -46,6 +46,15 @@ export const PROJECTS = [
     description:
       'Geothermal-powered direct air capture mineralizing CO2 into basalt rock for permanent storage.',
   },
+  {
+    id: 'ghana-biochar',
+    name: 'Ashanti Biochar Carbon Sink',
+    type: 'Engineered Removal',
+    country: 'Ghana',
+    registry: 'Puro.earth',
+    description:
+      'Converting agricultural residue into stable biochar that locks carbon into soils while improving farm yields.',
+  },
 ];
 
 export function getProjectById(id) {

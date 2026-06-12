@@ -1,0 +1,56 @@
+.buy-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.buy-form h3 {
+  margin: 0;
+}
+
+.buy-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.buy-form-field input {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+}
+
+.buy-form-field input:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+}
+
+.buy-form-error {
+  margin: 0;
+  color: var(--color-danger);
+  font-size: 0.85rem;
+}
+
+.buy-form-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.buy-form-available {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}

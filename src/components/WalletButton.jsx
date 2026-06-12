@@ -20,6 +20,7 @@ export default function WalletButton() {
           type="button"
           className="wallet-disconnect"
           onClick={disconnect}
+          aria-label="Disconnect wallet"
         >
           Disconnect
         </button>
@@ -33,6 +34,7 @@ export default function WalletButton() {
       className="wallet-button"
       onClick={connect}
       disabled={connecting}
+      aria-label="Connect wallet"
     >
       {connecting ? 'Connecting...' : 'Connect Wallet'}
     </button>

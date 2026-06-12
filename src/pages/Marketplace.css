@@ -27,6 +27,22 @@
   color: var(--color-text);
 }
 
+.marketplace-search {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  padding: 0.6rem 0.85rem;
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.marketplace-search:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+}
+
 .marketplace-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));

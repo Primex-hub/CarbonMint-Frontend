@@ -38,6 +38,13 @@ Then open the URL Vite prints (default `http://localhost:5173`).
 - `npm run dev` — start the Vite dev server with hot reloading.
 - `npm run build` — produce an optimized production build in `dist/`.
 - `npm run preview` — serve the production build locally to sanity-check it.
+- `npm test` — run the unit test suite with the Node.js built-in test runner.
+
+## CI
+
+A GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and
+pull request. It installs dependencies, builds the project, and runs the full
+test suite. Any failure will block the workflow.
 
 ## How it works
 

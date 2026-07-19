@@ -47,6 +47,7 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
 
   function submitForm(event) {
     event?.preventDefault();
+    event?.stopPropagation();
     setTouched(true);
     if (!validation.valid) return;
     onConfirm(Number(tonnes), beneficiary.trim());

@@ -33,6 +33,7 @@ export default function BuyForm({ batch, onBuy, submitting }) {
 
   function submitForm(event) {
     event.preventDefault();
+    event.stopPropagation();
     setTouched(true);
     if (!validation.valid) return;
     onBuy(Number(quantity));

@@ -31,11 +31,21 @@ export default function BuyForm({ batch, onBuy, submitting }) {
     return q * batch.pricePerTonne;
   }, [quantity, batch.pricePerTonne]);
 
-  function handleSubmit(event) {
+  function submitForm(event) {
     event.preventDefault();
     setTouched(true);
     if (!validation.valid) return;
     onBuy(Number(quantity));
+  }
+
+  function handleSubmit(event) {
+    submitForm(event);
+  }
+
+  function handleInputKeyDown(event) {
+    if (event.key === 'Enter') {
+      submitForm(event);
+    }
   }
 
   if (soldOut) {
@@ -63,6 +73,7 @@ export default function BuyForm({ batch, onBuy, submitting }) {
           placeholder="0"
           onChange={(e) => setQuantity(e.target.value)}
           onBlur={() => setTouched(true)}
+          onKeyDown={handleInputKeyDown}
         />
       </label>
 

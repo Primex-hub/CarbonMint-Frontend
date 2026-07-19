@@ -45,19 +45,31 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
     inputRef.current?.focus();
   }, []);
 
-  function handleConfirm() {
+  function submitForm(event) {
+    event?.preventDefault();
     setTouched(true);
     if (!validation.valid) return;
     onConfirm(Number(tonnes), beneficiary.trim());
   }
 
+  function handleSubmit(event) {
+    submitForm(event);
+  }
+
+  function handleInputKeyDown(event) {
+    if (event.key === 'Enter') {
+      submitForm(event);
+    }
+  }
+
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div
+      <form
         className="modal"
         role="dialog"
         aria-modal="true"
         aria-labelledby="retire-modal-title"
+        onSubmit={handleSubmit}
         onClick={(e) => e.stopPropagation()}
       >
         <header className="modal-head">
@@ -91,6 +103,7 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
               placeholder="0"
               onChange={(e) => setTonnes(e.target.value)}
               onBlur={() => setTouched(true)}
+              onKeyDown={handleInputKeyDown}
             />
             <button
               type="button"
@@ -109,6 +122,7 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
             value={beneficiary}
             placeholder="On behalf of..."
             onChange={(e) => setBeneficiary(e.target.value)}
+            onKeyDown={handleInputKeyDown}
           />
         </label>
 
@@ -127,13 +141,13 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
           </Button>
           <Button
             variant="danger"
-            onClick={handleConfirm}
+            type="submit"
             disabled={submitting || (touched && !validation.valid)}
           >
             {submitting ? 'Retiring...' : 'Confirm retire'}
           </Button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

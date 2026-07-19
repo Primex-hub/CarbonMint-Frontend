@@ -8,6 +8,9 @@ project follows semantic versioning.
 
 ### Added
 
+- Last-updated timestamp on the Marketplace page, shown as a relative time
+  (e.g. "Updated 2 minutes ago") that refreshes automatically and shows the
+  full local date/time on hover.
 - Reusable UI components: `Tag`, `Alert`, `Tabs`, `CopyButton`, `ProgressBar`,
   `Avatar` and `Pagination`.
 - Utility hooks: `useToggle`, `usePrevious`, `useWindowSize`,

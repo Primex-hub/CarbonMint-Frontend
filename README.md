@@ -11,7 +11,8 @@ wallet, and **retire** (burn) them to receive a permanent offset certificate.
 ## Features
 
 - Landing page explaining the tokenized carbon-credit lifecycle (mint → buy → retire).
-- Marketplace with grid and list views of available credit batches.
+- Marketplace with grid and list views of available credit batches, showing a
+  live "last updated" timestamp for the listed data.
 - Batch detail page with a validated buy flow and live cost calculation.
 - My Credits page showing holdings with a retire flow.
 - Retirements page listing issued offset certificates.

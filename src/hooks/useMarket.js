@@ -7,6 +7,7 @@ import { fetchBatches } from '../services/api.js';
  *   batches: Array,
  *   loading: boolean,
  *   error: string|null,
+ *   lastUpdated: Date|null,
  *   reload: Function,
  * }}
  */
@@ -14,6 +15,7 @@ export function useMarket() {
   const [batches, setBatches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -21,6 +23,7 @@ export function useMarket() {
     try {
       const data = await fetchBatches();
       setBatches(data);
+      setLastUpdated(new Date());
     } catch (err) {
       setError(err.message || 'Failed to load marketplace.');
     } finally {
@@ -32,5 +35,5 @@ export function useMarket() {
     load();
   }, [load]);
 
-  return { batches, loading, error, reload: load };
+  return { batches, loading, error, lastUpdated, reload: load };
 }

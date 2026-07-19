@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Button from './Button.jsx';
+import LiveRegion from './LiveRegion.jsx';
 import { formatTonnes } from '../utils/format.js';
 import { validateRetireQuantity } from '../utils/validate.js';
 import './RetireModal.css';
@@ -112,8 +113,13 @@ export default function RetireModal({ holding, submitting, onConfirm, onClose })
         </label>
 
         {touched && !validation.valid && (
-          <p className="modal-error">{validation.error}</p>
+          <p className="modal-error" role="alert" aria-live="polite" aria-atomic="true">
+            {validation.error}
+          </p>
         )}
+
+        {/* Screen-reader announcement for submit state */}
+        <LiveRegion message={submitting ? 'Processing your retirement…' : ''} />
 
         <div className="modal-actions">
           <Button variant="ghost" onClick={onClose}>

@@ -7,6 +7,7 @@ import { formatCurrency, formatTonnes } from '../utils/format.js';
 import BuyForm from '../components/BuyForm.jsx';
 import Loader from '../components/Loader.jsx';
 import ErrorMessage from '../components/ErrorMessage.jsx';
+import LiveRegion from '../components/LiveRegion.jsx';
 import './BatchDetail.css';
 
 /**
@@ -117,6 +118,19 @@ export default function BatchDetail() {
         </div>
 
         <aside className="batch-detail-side">
+          {/* Polite announcement when a purchase completes successfully */}
+          <LiveRegion
+            message={
+              receipt
+                ? `Purchase complete. You bought ${formatTonnes(receipt.quantity)} for ${formatCurrency(receipt.total)}.`
+                : ''
+            }
+          />
+          {/* Assertive announcement for buy errors that need immediate attention */}
+          <LiveRegion
+            politeness="assertive"
+            message={error && batch ? error : ''}
+          />
           {receipt && (
             <div className="buy-receipt">
               <strong>Purchase complete</strong>

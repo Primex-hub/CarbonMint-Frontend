@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LiveRegion from './LiveRegion.jsx';
 import './CopyButton.css';
 
 /**
@@ -21,14 +22,19 @@ export default function CopyButton({ value, label = 'value', className = '' }) {
   }
 
   return (
-    <button
-      type="button"
-      className={`copy-btn ${className}`.trim()}
-      onClick={handleCopy}
-      aria-label={copied ? `Copied ${label}` : `Copy ${label}`}
-      title={copied ? 'Copied' : 'Copy'}
-    >
-      {copied ? '✓ Copied' : '⧉ Copy'}
-    </button>
+    <>
+      <button
+        type="button"
+        className={`copy-btn ${className}`.trim()}
+        onClick={handleCopy}
+        aria-label={copied ? `Copied ${label}` : `Copy ${label}`}
+        title={copied ? 'Copied' : 'Copy'}
+      >
+        {copied ? '✓ Copied' : '⧉ Copy'}
+      </button>
+      {/* Polite announcement so screen readers confirm the copy even when
+          focus stays on the button. */}
+      <LiveRegion message={copied ? `Copied ${label}` : ''} />
+    </>
   );
 }

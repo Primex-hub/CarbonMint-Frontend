@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import Button from './Button.jsx';
+import LiveRegion from './LiveRegion.jsx';
 import { formatCurrency, formatTonnes } from '../utils/format.js';
 import { validateBuyQuantity } from '../utils/validate.js';
 import { useWallet } from '../hooks/useWallet.js';
@@ -66,8 +67,13 @@ export default function BuyForm({ batch, onBuy, submitting }) {
       </label>
 
       {touched && !validation.valid && (
-        <p className="buy-form-error">{validation.error}</p>
+        <p className="buy-form-error" role="alert" aria-live="polite" aria-atomic="true">
+          {validation.error}
+        </p>
       )}
+
+      {/* Screen-reader announcement for submit state */}
+      <LiveRegion message={submitting ? 'Processing your purchase…' : ''} />
 
       <div className="buy-form-summary">
         <span>Total</span>

@@ -40,7 +40,7 @@ export default function BuyForm({ batch, onBuy, submitting }) {
   if (soldOut) {
     return (
       <div className="buy-form">
-        <h3>Buy credits</h3>
+        <h2 className="buy-form-title">Buy credits</h2>
         <p className="buy-form-soldout">
           This batch is fully sold. Browse the marketplace for other available
           credits.
@@ -51,7 +51,7 @@ export default function BuyForm({ batch, onBuy, submitting }) {
 
   return (
     <form className="buy-form" onSubmit={handleSubmit}>
-      <h3>Buy credits</h3>
+      <h2 className="buy-form-title">Buy credits</h2>
       <label className="buy-form-field">
         <span>Quantity (tonnes)</span>
         <input

@@ -65,7 +65,7 @@ export default function Home() {
       <section className="steps">
         {steps.map((step) => (
           <div className="step-card" key={step.title}>
-            <h3>{step.title}</h3>
+            <h2 className="step-title">{step.title}</h2>
             <p>{step.body}</p>
           </div>
         ))}

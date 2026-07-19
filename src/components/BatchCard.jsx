@@ -25,7 +25,7 @@ export default function BatchCard({ batch }) {
           <span className="batch-card-vintage">Vintage {batch.vintage}</span>
         )}
       </div>
-      <h3 className="batch-card-name">{project?.name}</h3>
+      <h2 className="batch-card-name">{project?.name}</h2>
       <p className="batch-card-country">{project?.country}</p>
       <div className="batch-card-stats">
         <div>

@@ -6,7 +6,7 @@ import Button from './Button.jsx';
  */
 export default function ErrorMessage({ message, onRetry }) {
   return (
-    <div className="error-message" role="alert">
+    <div className="error-message" role="alert" aria-live="assertive" aria-atomic="true">
       <span className="error-icon" aria-hidden="true">
         !
       </span>

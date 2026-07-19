@@ -9,6 +9,7 @@ import Button from '../components/Button.jsx';
 import RetireModal from '../components/RetireModal.jsx';
 import EmptyState from '../components/EmptyState.jsx';
 import ErrorMessage from '../components/ErrorMessage.jsx';
+import LiveRegion from '../components/LiveRegion.jsx';
 import './MyCredits.css';
 
 /**
@@ -23,10 +24,12 @@ export default function MyCredits() {
   const [active, setActive] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const [retireSuccess, setRetireSuccess] = useState('');
 
   async function handleConfirm(tonnes, beneficiary) {
     setSubmitting(true);
     setError(null);
+    setRetireSuccess('');
     try {
       const certificate = await retireCredits({
         holding: active,
@@ -35,6 +38,9 @@ export default function MyCredits() {
         beneficiary,
       });
       retireHolding(active.batchId, tonnes, certificate);
+      setRetireSuccess(
+        `Retirement complete. ${formatTonnes(tonnes)} from ${active.projectName} have been permanently retired.`
+      );
       setActive(null);
     } catch (err) {
       setError(err.message || 'Retirement failed.');
@@ -70,6 +76,11 @@ export default function MyCredits() {
           <strong>{formatTonnes(totals.retired)}</strong>
         </div>
       </div>
+
+      {/* Polite announcement for successful retirements */}
+      <LiveRegion message={retireSuccess} />
+      {/* Assertive announcement for retirement errors */}
+      <LiveRegion politeness="assertive" message={error || ''} />
 
       {error && <ErrorMessage message={error} />}
 

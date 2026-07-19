@@ -68,6 +68,69 @@ src/
   constants/    project catalog and runtime config
 ```
 
+## Accessibility
+
+CarbonMint follows WCAG 2.1 SC 4.1.3 (Status Messages) to ensure screen readers
+receive timely announcements for every asynchronous UI update.
+
+### LiveRegion component
+
+`src/components/LiveRegion.jsx` is a visually-hidden `role="status"` element that
+accepts a `message` prop and an optional `politeness` prop (`"polite"` or
+`"assertive"`). It is always present in the DOM so assistive technologies
+register it before any message is injected, preventing missed announcements.
+
+```jsx
+// Non-critical feedback — announces after the current speech finishes
+<LiveRegion message="Purchase complete. You bought 10 tCO2e for 150.00 USDC." />
+
+// Urgent errors — interrupts immediately
+<LiveRegion politeness="assertive" message={error} />
+```
+
+### Announcement map
+
+| Location | Event | Politeness |
+|---|---|---|
+| `BuyForm` | Form submitting ("Processing your purchase…") | polite |
+| `BuyForm` | Validation error (empty / out-of-range quantity) | polite (`role=alert`) |
+| `RetireModal` | Form submitting ("Processing your retirement…") | polite |
+| `RetireModal` | Validation error | polite (`role=alert`) |
+| `BatchDetail` | Purchase receipt ("Purchase complete. You bought…") | polite |
+| `BatchDetail` | Buy error after batch is loaded | assertive |
+| `MyCredits` | Retirement success ("Retirement complete. X tCO2e retired…") | polite |
+| `MyCredits` | Retirement error | assertive |
+| `WalletButton` | Wallet connecting ("Connecting wallet…") | polite |
+| `WalletButton` | Wallet connected ("Wallet connected: \<address\>") | polite |
+| `CopyButton` | Clipboard copy ("Copied \<label\>") | polite |
+| `Alert` | `danger` / `warning` variants | assertive (`role=alert`) |
+| `Alert` | `info` / `success` variants | polite (`role=status`) |
+| `ErrorMessage` | Any rendered error | assertive (`role=alert`) |
+| `Loader` | Spinner visible | polite (`role=status`) |
+| `SkeletonGrid` | Batch list loading | polite (`role=status aria-busy`) |
+
+### Design decisions
+
+- **Never use `aria-live="assertive"` for routine updates.** It is reserved for
+  errors and urgent states that require the user's immediate attention. All
+  success messages and progress indicators use `"polite"`.
+- **`aria-atomic="true"`** is set on every live region so screen readers
+  announce the complete updated string rather than just the changed fragment.
+- **Always-present regions** (`LiveRegion`) prevent assistive technologies from
+  missing the first announcement (some AT ignore content injected into newly
+  created live regions).
+- **`aria-relevant="additions text"`** on `LiveRegion` ensures both new content
+  and text mutations are announced.
+
+### Testing
+
+Component-level accessibility tests live in `src/test/aria-live.test.jsx` and
+run with [Vitest](https://vitest.dev/) + [@testing-library/react](https://testing-library.com/).
+
+```bash
+npm test
+```
+
 ## Environment
 
 Copy `.env.example` to `.env` to override defaults. All values are optional —
